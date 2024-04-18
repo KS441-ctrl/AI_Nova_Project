@@ -5,17 +5,24 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { ReactNode } from 'react';
+
 
 const Dialog = DialogPrimitive.Root
 
 const DialogTrigger = DialogPrimitive.Trigger
+export interface DialogPortalProps {
+  children?: ReactNode;
+  className?: string;
+  // Add other properties that your dialog portal might need
+}
 
 const DialogPortal = ({
   className,
   ...props
-}: DialogPrimitive.DialogPortalProps) => (
+}: DialogPortalProps) => (
   <DialogPrimitive.Portal className={cn(className)} {...props} />
-)
+);
 DialogPortal.displayName = DialogPrimitive.Portal.displayName
 
 const DialogOverlay = React.forwardRef<
